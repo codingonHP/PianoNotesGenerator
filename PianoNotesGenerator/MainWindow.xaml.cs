@@ -10,10 +10,12 @@ namespace PianoNotesGenerator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string[] _notes = new string[] { "A", "B", "C", "D", "E", "F", "G", "A#", "B#", "C#", "D#", "E#", "F#", "G#" };
+        private string[] _notes = new string[] { "A", "B", "C", "D", "E", "F", "G" };
+
         private const int _defaultDifficulty = 1000;
         private int _difficulty = _defaultDifficulty;
         private string _baseWindowTitle = "Random Notes Generator";
+
 
         Random random = new Random();
         Timer _timer;
@@ -22,6 +24,7 @@ namespace PianoNotesGenerator
         {
             InitializeComponent();
             txtCustomDifficulty.IsEnabled = false;
+            chkFlatNotes.Content = "Generate " + "\u266D" + " notes";
             Title = _baseWindowTitle + " " + "new note in " + _difficulty + " ms";
 
             Task task = new Task(() =>
@@ -40,12 +43,12 @@ namespace PianoNotesGenerator
 
         public static void GenerateNotes(MainWindow window)
         {
-            var newRandom = window.random.Next(0, 13);
+            var newRandom = window.random.Next(0, 7);
             try
             {
                 window.Dispatcher.Invoke(() =>
                 {
-                    window.lblNewNote.Content = window._notes[newRandom];
+                    window.lblNewNote.Content = window._notes[newRandom] + window.GetNoteIntensity();
                 });
             }
             catch (Exception)
@@ -114,6 +117,24 @@ namespace PianoNotesGenerator
             }
 
             txtCustomDifficulty.Text = string.Empty;
+        }
+
+        private string GetNoteIntensity()
+        {
+            int[] whatToGenerateNext = new int[] { 0, 1, 2 };
+            var next = random.Next(0, 3);
+
+
+            if (next == 1 && chkSharpNotes.IsChecked == true)
+            {
+                return "#";
+            }
+            else if (next == 2 && chkFlatNotes.IsChecked == true)
+            {
+                return "\u266D";
+            }
+
+            return "";
         }
 
     }
