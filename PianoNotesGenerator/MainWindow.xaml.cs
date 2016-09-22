@@ -110,10 +110,13 @@ namespace PianoNotesGenerator
             if (chkWantCustomDifficulty.IsChecked == true)
             {
                 txtCustomDifficulty.IsEnabled = true;
+                sldDifficulty.IsEnabled = false;
+                sldDifficulty.Value = 0;
             }
             else
             {
                 txtCustomDifficulty.IsEnabled = false;
+                sldDifficulty.IsEnabled = true;
             }
 
             txtCustomDifficulty.Text = string.Empty;
