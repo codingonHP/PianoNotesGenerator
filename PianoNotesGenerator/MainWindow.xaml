@@ -1,0 +1,25 @@
+﻿<Window x:Class="PianoNotesGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Piano Notes Generator" Height="350" Width="525" ResizeMode="NoResize" Topmost="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="12*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lblNewNote" Content="Hello!" HorizontalAlignment="Center" Margin="42,42,55,0" VerticalAlignment="Top" Height="118" Width="422" FontSize="72" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Algerian" Grid.ColumnSpan="2"/>
+        <Slider x:Name="sldDifficulty" IsSnapToTickEnabled="True" HorizontalAlignment="Left" Margin="52,186,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="422" ValueChanged="sldDifficulty_ValueChanged" TickPlacement="BottomRight" Cursor="SizeWE" TickFrequency="5000" LargeChange="1000" Maximum="60000" SmallChange="1000" ToolTip="Difficulty level (ms)"/>
+        <CheckBox x:Name="chkWantCustomDifficulty" Content="Custom Difficulty" HorizontalAlignment="Left" Margin="56,242,0,0" VerticalAlignment="Top" Width="111"  Click="chkWantCustomDifficulty_Clicked"/>
+        <TextBox x:Name="txtCustomDifficulty" HorizontalAlignment="Left" Height="33" Margin="181,230,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="191" TextChanged="txtCustomDifficulty_TextChanged" ToolTip="Frequency of note changing in ms"/>
+        <Button  x:Name="btnRefresh" HorizontalAlignment="Left" Margin="406,230,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="-20.35,2.182" Height="28" Content="Refresh" Click="btnRefresh_Click" BorderThickness="5,1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.413"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.7"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>
